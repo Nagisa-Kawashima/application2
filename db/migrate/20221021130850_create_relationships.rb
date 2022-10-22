@@ -8,3 +8,13 @@ class CreateRelationships < ActiveRecord::Migration[6.1]
     end
   end
 end
+
+# このような書き方もある↓
+# def change
+#     create_table :relationships do |t|
+#       t.integer :follower_id
+#       t.integer :followed_id
+
+#       t.timestamps
+#     end
+#   end
