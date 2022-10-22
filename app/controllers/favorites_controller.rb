@@ -21,6 +21,7 @@ class FavoritesController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
       # root_pathと決まっているわけではないがこのパスにしたほうが安全であるということ
+      # redirect_to request.refererでも
     end
 
   end

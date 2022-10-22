@@ -6,12 +6,17 @@ class BooksController < ApplicationController
     @user = @book.user
     @hoge = Book.new
     @post_comments = PostComment.new
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
   end
 
   def index
     @books = Book.all
     @book = Book.new
     @post_comments = PostComment.new
+    @user = current_user
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
     # @favorites = Favorites.new
   end
 

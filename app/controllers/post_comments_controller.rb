@@ -14,6 +14,7 @@ class PostCommentsController < ApplicationController
   def destroy
     PostComment.find(params[:id]).destroy
     redirect_back(fallback_location: root_path)
+    # redirect_to request.refererにも
   end
 
   private
