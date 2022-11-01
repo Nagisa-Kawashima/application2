@@ -5,13 +5,36 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
     @hoge = Book.new
-    @post_comments = PostComment.new
+    @post_comment = PostComment.new
     @following_users = @user.following_user
     @follower_users = @user.follower_user
   end
 
   def index
-    @books = Book.all
+    to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
+    @books = Book.all.sort {|a,b|
+      b.favorites.where(created_at: from...to).size <=>
+      a.favorites.where(created_at: from...to).size
+    }
+
+
+    # @books = Book.all
+    # @books = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id))
+      # to = Time.current.at_end_of_day
+      # from = (to - 6.day).at_beginning_of_day
+      # @books = Book.includes(:favorited_users).
+      #   sort_by {|x|
+      #     x.favorited_users.includes(:favorites).where(created_at: from...to).size
+      #   }.reverse
+    # to  = Time.current.at_end_of_day
+    # from  = (to - 6.day).at_beginning_of_day
+    # @books = Book.includes(:favorited_users).
+    #   sort {|a,b|
+    #     b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
+    #     a.favorited_users.includes(:favorites).where(created_at: from...to).size
+    #   }
+    # @all_lanks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id))
     @book = Book.new
     @post_comments = PostComment.new
     @user = current_user

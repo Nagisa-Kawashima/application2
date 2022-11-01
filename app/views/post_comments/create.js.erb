@@ -1,0 +1,11 @@
+$('.post-comments-index-<%= @book.id %>').html("<%= j(render partial: 'post_comments/post_comment',locals: {book: @book}) %>")
+
+
+
+$('.comment-textarea').val("")
+
+
+
+
+
+
