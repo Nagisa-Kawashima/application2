@@ -1,5 +1,10 @@
 
-$('.message').append("<p style='text-align: left;'><%= @chat.message %></p>");
+$('.message').append("<tbody><tr><th><p style='text-align: left;'><%= @chat.message %></p></th></tr></tbody>");
 
 $('input[type=text]').val("")
+$('.js-form')[0].reset();
 
+<!--appendメソッドは、引数に指定した要素をある親要素の末尾に追加してくれるメソッドです。上記では、messageクラスが付与された親要素に引数の子要素を追加します。-->
+
+
+<!--js-formクラスは、form要素を指しています。resetメソッドを使うことで入力フォームの内容をリセットすることが出来ます。-->

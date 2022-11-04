@@ -21,9 +21,11 @@
           <%= render "favorites/favorite", book: book %>
         </td>
         <td>コメント件数：<%= book.post_comments.count %></td>
+        <td><%= render "books/static_rate", book: book %></td>
       </tr>
     <% end %>
   </tbody>
+</table>
 
 <!--book.favoritesはrute.rbで行ったアソシエーションの設定により定義しなくても使うことが出きる-->
 <!--アイコンの中のフォントはdeleteならついた時の挙動-->

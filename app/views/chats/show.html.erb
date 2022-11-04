@@ -1,8 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-12">
             <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">CHAT WITH <%= @user.name %></h2>
-
             <table class="message table">
               <thead>
                 <tr>
@@ -35,11 +34,12 @@
               <%= render "layouts/errors", obj: @chat %>
             </div>
 
-            <%= form_with model: @chat, data: {remote: true} do |f| %>
+            <div><%= form_with model: @chat, data: {remote: true} do |f| %>
               <%= f.text_field :message %>
               <%= f.hidden_field :room_id %>
-              <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
+              <%= f.submit "SEND", class:"btn btn-lg btn-success chat-btn" %>
             <% end %>
+            </div>
         </div>
     </div>
 </div>
