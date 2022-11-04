@@ -14,9 +14,16 @@ class GroupsController < ApplicationController
     @follower_users =  user.follower_user
   end
 
+  # def join
+  #   @group = Group.find(params[:group_id])
+  #   # @group.users << current_user
+  #   redirect_to groups_path
+  # end
+
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+    # @group.users << current_user
     if @group.save
       redirect_to groups_path, notice: "You have created group successfully."
     else
@@ -30,6 +37,9 @@ class GroupsController < ApplicationController
     @user = current_user
     @following_users = @user.following_user
     @follower_users = @user.follower_user
+    # @group.users = GroupUser(user_id: params[:id])
+    # users = User.all
+    # @group.users << current_user
   end
 
   def edit
@@ -43,6 +53,12 @@ class GroupsController < ApplicationController
     else
       render 'edit'
     end
+
+  # def destroy
+  #   @group = Group.find(params[:id])
+  #   @group.users.delete(current_user)
+  #   redirect_to groups_path
+  # end
   end
 
 
