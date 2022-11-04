@@ -8,9 +8,10 @@ import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "jquery";
-// import raty from 'raty-js';
+// import raty from 'raty-js';これはいらん
 import "popper.js";
 import "bootstrap";
+import Chart from 'chart.js/auto';
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application";
 
@@ -18,7 +19,8 @@ import "../stylesheets/application";
 /*global jQuery*/
 // global.$ = jQuery;
 // window.$ = jQuery;
-// window.$ = window.jQuery = require('jquery');
+window.$ = window.jQuery = require('jquery');
+global.Chart = Chart;
 
 
 import Raty from "raty.js";
@@ -32,6 +34,7 @@ Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
 
-require("chartkick"); // 追記
-require("chart.js"); // 追記
+// require("chartkick"); // 追記
+// require("chart.js"); // 追記
+// これいらんぽい
 
