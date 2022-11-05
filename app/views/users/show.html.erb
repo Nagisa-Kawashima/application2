@@ -115,7 +115,7 @@
                       ticks: {
                         suggestedMax: 100,
                         suggestedMin: 0,
-                        stepSize: 20,
+                        stepSize: 10,
                         callback: function(value, index, values){
                           return  value
                         }
@@ -126,6 +126,7 @@
               });
             });
           </script>
+          <%= render 'search_form', user: @user %>
       </div>
     </div>
   </div>

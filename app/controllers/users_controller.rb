@@ -12,8 +12,18 @@ class UsersController < ApplicationController
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
     @last_week_book = @books.created_last_week
+    
+  
   end
-
+  
+  def search_form
+    @user = User.find(params[:user_id])
+    @books = @user.books.where(created_at: params[:created_at].to_date.all_day)
+    render :search_form
+  end
+  
+  
+  
   def index
     @users = User.all
     @book = Book.new

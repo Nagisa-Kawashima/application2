@@ -22,6 +22,8 @@
         </td>
         <td>コメント件数：<%= book.post_comments.count %></td>
         <td><%= render "books/static_rate", book: book %></td>
+        <td><%= l book.created_at %></td>
+        <td>閲覧数：<%= book.view_counts.count %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,3 +32,7 @@
 <!--book.favoritesはrute.rbで行ったアソシエーションの設定により定義しなくても使うことが出きる-->
 <!--アイコンの中のフォントはdeleteならついた時の挙動-->
 <!--postなら消した時の挙動をかく-->
+
+
+
+

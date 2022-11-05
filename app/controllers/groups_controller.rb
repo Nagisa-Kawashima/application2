@@ -12,11 +12,12 @@ class GroupsController < ApplicationController
     user = current_user
     @following_users = user.following_user
     @follower_users =  user.follower_user
+    # @group.users << current_user
   end
 
   # def join
   #   @group = Group.find(params[:group_id])
-  #   # @group.users << current_user
+
   #   redirect_to groups_path
   # end
 
