@@ -11,7 +11,10 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <%= render 'users/search' %>
+    <div class="container p-0 mr-0">
+      <%= render 'users/search' %>
+      <%= render 'searches/tag_form' %>
+    </div>
       <main>
         <p id="notice"><%= notice %></p>
         <%= yield %>
