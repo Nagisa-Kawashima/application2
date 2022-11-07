@@ -74,4 +74,37 @@ Rails.application.configure do
   config.hosts.clear
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #deviseが認証用のURLなどを生成するのに必要になる（らしい）
+  # config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+  config.action_mailer.delivery_method = :smtp
+  #送信方法を指定（この他に:sendmail/:file/:testなどがあります)
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'gmail.com',
+    user_name:            ENV['MAIL_ADDRESS'],#Gmailのアドレス これは管理人のメアドじゃないと
+    password:             ENV['MAIL_PASSWORD'],#後述！大苦戦しました！
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
+
+ #gmail利用時はaddress,domain,portは下記で固定
+
+#   port => SMTPサーバーのポート番号
+# address => SMTPサーバーのホスト名
+# domain => HELOドメイン
+# user_name => メール送信に使用するgmailのアカウント
+# password => メール送信に使用するgmailのパスワード
+# authentication => 認証方法
+# enable_starttls_auto => メールの送信にTLS認証を使用するか
+
+
+
+# dotenv-railsとは、環境変数を管理する事が出来る便利なgemのこと
+# 環境変数とは、全てのプログラムに共有して使うことが出来るOSが提供する変数のこと
+# 環境変数は、.envファイルに定義してENV['環境変数名']で参照する事が出来る
+# .envファイルは、 Git管理下から除外する為に必ず.gitignoreファイルに指定しよう
 end

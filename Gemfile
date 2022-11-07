@@ -58,3 +58,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'jquery-rails'
 gem "chartkick"
+gem 'dotenv-rails'
+
+
+# 送信先メールアドレスやパスワードをソースに直書きしてしまうと
+# セキュリティ的に問題があるので、通
+# 常は環境変数に設定しておきます。
+# dotenv-railsを導入することで、.envに記載されている環境変数を
+# ENV['variable name']の形式で参照できるようになります。

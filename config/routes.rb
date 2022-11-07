@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'event_notices/new'
+  get 'event_notices/sent'
   get 'chats/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -23,6 +25,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :groups, except: [:destroy] do
     resource :group_users, only: [:create, :destroy]
+    resources :event_notices, only: [:new, :create]
+    get "event_notices" => "event_notices#sent"
   end
 end
 
